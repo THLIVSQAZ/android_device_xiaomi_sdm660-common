@@ -24,8 +24,6 @@
 
 COMMON_PATH := device/xiaomi/sdm660-common
 
-BOARD_VENDOR := xiaomi
-
 # Build
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_PREBUILT_ELF_FILES := true
