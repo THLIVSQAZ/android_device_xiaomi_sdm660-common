@@ -455,6 +455,7 @@ PRODUCT_PACKAGES += \
     hostapd \
     libqsap_sdk \
     libwifi-hal-qcom \
+    TetheringConfigOverlay \
     wcnss_service \
     WifiOverlay \
     wpa_supplicant \
