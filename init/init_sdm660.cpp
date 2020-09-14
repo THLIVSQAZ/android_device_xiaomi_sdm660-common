@@ -40,11 +40,10 @@
 #include <sys/_system_properties.h>
 
 #include "vendor_init.h"
-#include "property_service.h"
 
 using android::base::GetProperty;
 using android::base::ReadFileToString;
-using android::init::property_set;
+using android::base::SetProperty;
 
 char const *heapstartsize;
 char const *heapgrowthlimit;
@@ -90,27 +89,27 @@ void vendor_load_properties()
 {
     check_device();
 
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
-    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_set("dalvik.vm.heapsize", heapsize);
-    property_set("dalvik.vm.heaptargetutilization", heaptargetutilization);
-    property_set("dalvik.vm.heapminfree", heapminfree);
-    property_set("dalvik.vm.heapmaxfree", heapmaxfree);
+    SetProperty("dalvik.vm.heapstartsize", heapstartsize);
+    SetProperty("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    SetProperty("dalvik.vm.heapsize", heapsize);
+    SetProperty("dalvik.vm.heaptargetutilization", heaptargetutilization);
+    SetProperty("dalvik.vm.heapminfree", heapminfree);
+    SetProperty("dalvik.vm.heapmaxfree", heapmaxfree);
 
     std::string hw_device;
     char const *hw_id_file = "/sys/devices/platform/HardwareInfo/hw_id";
     ReadFileToString(hw_id_file, &hw_device);
     if (hw_device.find("D9P") != std::string::npos) {
-        property_set("persist.sys.fp.vendor", "fpc");
-        property_set("ro.board.variant", "d9p");
-        property_set("ro.sf.lcd_density", "265");
-        property_set("persist.radio.multisim.config", "ssss");
-        property_set("ro.product.model", "MI PAD 4 PLUS");
+        SetProperty("persist.sys.fp.vendor", "fpc");
+        SetProperty("ro.board.variant", "d9p");
+        SetProperty("ro.sf.lcd_density", "265");
+        SetProperty("persist.radio.multisim.config", "ssss");
+        SetProperty("ro.product.model", "MI PAD 4 PLUS");
     } else if (hw_device.find("D9") != std::string::npos) {
-        property_set("persist.sys.fp.vendor", "none");
-        property_set("ro.board.variant", "d9");
-        property_set("ro.sf.lcd_density", "320");
-        property_set("persist.radio.multisim.config", "ssss");
-        property_set("ro.product.model", "MI PAD 4");
+        SetProperty("persist.sys.fp.vendor", "none");
+        SetProperty("ro.board.variant", "d9");
+        SetProperty("ro.sf.lcd_density", "320");
+        SetProperty("persist.radio.multisim.config", "ssss");
+        SetProperty("ro.product.model", "MI PAD 4");
     }
 }
