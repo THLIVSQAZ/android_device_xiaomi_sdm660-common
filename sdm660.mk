@@ -433,12 +433,6 @@ PRODUCT_PACKAGES += \
     libipanat \
     liboffloadhal
 
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-impl \
-    android.hardware.thermal@1.0-service \
-    thermal.sdm660
-
 # VNDK
 PRODUCT_PACKAGES += \
     libstdc++.vendor \
