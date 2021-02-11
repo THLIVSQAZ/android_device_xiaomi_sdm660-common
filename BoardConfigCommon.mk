@@ -154,7 +154,10 @@ TARGET_USES_INTERACTION_BOOST := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy-minimal
+include device/qcom/sepolicy-legacy-um/SEPolicy.mk
+BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/public
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
